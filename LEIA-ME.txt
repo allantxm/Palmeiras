@@ -1,0 +1,21 @@
+PAINEL PALMEIRAS · PAINEL ESTATISTICO
+
+Como abrir: extraia o ZIP e abra index.html no navegador (tela inicial: Estadio 3D).
+
+FILTRO DE TEMPORADA
+- Abre sempre em 2026. Clique em outros anos para somar/combinar (ex.: 2026 + 2025) ou em "Todas".
+- Disponibilidade na planilha: elenco 2022, 2024, 2025, 2026; rankings/recordes 2025 e 2026;
+  resultados jogo a jogo, agenda, mata-mata, confrontos e Estadio 3D apenas 2026.
+- O filtro de competicao tambem vale para Elenco, Comparar e Recordes.
+
+FOTOS
+- Pasta fotos/: um arquivo por jogador, nomeado com o ID da planilha (ex.: PAL024.webp = Jhon Arias).
+- Para incluir/trocar uma foto: salve (PNG/WEBP/JPG) como fotos/PALxxx.png e rode python build.py.
+- Jogadores sem foto aparecem com silhueta.
+
+ATUALIZAR DADOS
+- Edite Palmeiras_Base_Dados_Completa.xlsx e rode:  python build.py  (pandas, openpyxl, pillow).
+- Visual: tpl.html | 3D: stadium.js | dados/fotos: build.py. O index.html e gerado.
+
+O 3D carrega three.js da internet (cdnjs); sem internet, as demais abas funcionam normalmente.
+Projeto independente, nao oficial. Dados fornecidos pelo usuario, sem validacao externa.
