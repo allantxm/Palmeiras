@@ -1,21 +1,34 @@
-PAINEL PALMEIRAS · PAINEL ESTATISTICO
+PAINEL PALMEIRAS · PAINEL ESTATISTICO (base integrada 2026)
 
 Como abrir: extraia o ZIP e abra index.html no navegador (tela inicial: Estadio 3D).
 
-FILTRO DE TEMPORADA
-- Abre sempre em 2026. Clique em outros anos para somar/combinar (ex.: 2026 + 2025) ou em "Todas".
-- Disponibilidade na planilha: elenco 2022, 2024, 2025, 2026; rankings/recordes 2025 e 2026;
-  resultados jogo a jogo, agenda, mata-mata, confrontos e Estadio 3D apenas 2026.
-- O filtro de competicao tambem vale para Elenco, Comparar e Recordes.
+ESTADIO 3D · GOLS DA PARTIDA
+- Cada gol e reproduzido na ordem dos minutos (45+2 vem depois de 45 e antes de 46).
+- Para cada gol, um jogador do time que marcou corre ate a bola no centro do campo e chuta para o gol;
+  a etiqueta com foto, autor e minuto acompanha o jogador e a bola. Gol contra vale para o time beneficiado
+  (a etiqueta mostra o autor e "Gol contra").
+- Controles: pausar/continuar, 1x/2x/4x, reiniciar, clicar num gol (lista ou linha do tempo) para ir a ele,
+  "Seguir o gol" (camera automatica), vistas Maquete/Aerea/Tribuna/Atras do gol.
+- "Ficha da partida": gols, cartoes, assistencias e qualidade dos dados de cada jogo (tambem abre ao clicar
+  em qualquer jogo nas abas Jogos, Confrontos, Mata-mata e Desempenho).
+- Desempenho > "Gols minuto a minuto": gols por faixa de minuto, quem abre o placar, autores e tipos de gol.
+- Ficha do jogador: lista os gols descritos jogo a jogo.
 
-FOTOS
-- Pasta fotos/: um arquivo por jogador, nomeado com o ID da planilha (ex.: PAL024.webp = Jhon Arias).
-- Para incluir/trocar uma foto: salve (PNG/WEBP/JPG) como fotos/PALxxx.png e rode python build.py.
-- Jogadores sem foto aparecem com silhueta.
+NOVA BASE (Palmeiras_Base_Projeto_Integrada_2026.xlsx)
+- "Detalhes Partidas 2026": autor/minuto/tipo dos gols, cartoes e assistencias (texto livre, convertido pelo build.py).
+- "Gols Confirmados 2026": corrige os gols de 4 jogos (J018, J024, J034, J040) e prevalece sobre o texto.
+- "Notas integracao 2026": avisos exibidos no rodape.
+- O build.py confere cada jogo com o placar da aba Resultados. Se algum nao fechar, ele avisa e o 3D usa
+  gols ilustrativos para aquela partida (hoje: 66 de 66 jogos fecham).
+- Em 9 jogos (J002, J009, J012, J019, J028, J030, J055, J059, J063) a planilha agrupa gols do mesmo autor
+  ("2x"); a ligacao autor x minuto segue a ordem da lista. O painel avisa isso na partida.
+- Assistencias nao sao ligadas a gols especificos e as estatisticas de jogadores (Elenco/rankings) nao sao
+  somadas aos eventos jogo a jogo, conforme a nota da base.
 
 ATUALIZAR DADOS
-- Edite Palmeiras_Base_Dados_Completa.xlsx e rode:  python build.py  (pandas, openpyxl, pillow).
-- Visual: tpl.html | 3D: stadium.js | dados/fotos: build.py. O index.html e gerado.
+- Edite a planilha e rode:  python build.py [arquivo.xlsx]   (pandas, openpyxl, pillow).
+- Fotos: fotos/PALxxx.png|webp|jpg (ID da planilha). Visual: tpl.html | 3D: stadium.js | dados: build.py.
+- O index.html e gerado.
 
-O 3D carrega three.js da internet (cdnjs); sem internet, as demais abas funcionam normalmente.
+O 3D carrega three.js da internet (cdnjs, com plano B no jsDelivr); sem internet, as demais abas funcionam.
 Projeto independente, nao oficial. Dados fornecidos pelo usuario, sem validacao externa.

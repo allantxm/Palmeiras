@@ -215,11 +215,49 @@ td.hl{font-weight:700;color:var(--tx)}
 .vb{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
 #i3{font-size:12.5px;color:var(--mu);margin:10px 2px}
 
+/* ---------- estádio 3D: HUD, linha do tempo e lista de gols ---------- */
+.cvw{position:relative}
+.hud{position:absolute;inset:0;pointer-events:none;border-radius:16px;overflow:hidden}
+.hud .clk{position:absolute;left:12px;top:12px;display:flex;align-items:baseline;gap:10px;min-width:96px;padding:7px 13px;border-radius:12px;color:#fff;background:rgba(4,14,9,.74);border:1px solid rgba(211,177,88,.45);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.hud .clk b{font:600 26px/1 var(--disp);color:#f0d891}
+.hud .clk span{font:600 10.5px var(--ui);letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.72)}
+.hud .sbd{position:absolute;right:12px;top:12px;display:flex;align-items:center;gap:8px;max-width:58%;padding:7px 13px;border-radius:12px;color:#fff;font:600 13px var(--ui);background:rgba(4,14,9,.74);border:1px solid rgba(255,255,255,.14);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.hud .sbd:empty{display:none}.hud .sbd span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.hud .sbd b{font:600 22px/1 var(--disp);color:#f0d891}
+.gol{position:absolute;left:50%;top:20%;transform:translateX(-50%);text-align:center;color:#fff;font:700 56px/1 var(--disp);text-shadow:0 4px 26px rgba(0,0,0,.65);opacity:0;white-space:nowrap}
+.gol small{display:block;margin-top:9px;font:600 15px var(--ui);letter-spacing:.03em}
+.gol.P{color:#8dffbf}.gol.show{animation:golp 1.7s ease-out forwards}
+@keyframes golp{0%{opacity:0;transform:translateX(-50%) scale(.5)}14%{opacity:1;transform:translateX(-50%) scale(1.12)}26%{transform:translateX(-50%) scale(1)}78%{opacity:1}100%{opacity:0;transform:translateX(-50%) translateY(-16px) scale(1)}}
+.vb2{margin-top:-4px}.vb .sp{flex:1}
+.tr{margin:12px 6px 0}.trk{position:relative;height:36px}
+.trk::before{content:"";position:absolute;left:0;right:0;top:11px;height:6px;border-radius:4px;background:var(--bd2)}
+.trk .tick{position:absolute;top:22px;font-size:10.5px;color:var(--mu)}
+.phd{position:absolute;top:6px;width:2px;height:16px;margin-left:-1px;background:var(--gold);border-radius:2px;pointer-events:none;z-index:2}
+.mk{position:absolute;top:5px;width:18px;height:18px;margin-left:-9px;padding:0;border-radius:50%;border:2px solid var(--card);cursor:pointer;transition:transform .15s;z-index:1}
+.mk.P{background:var(--g)}.mk.O{background:var(--mu)}.mk:hover{transform:scale(1.3)}
+#g3{margin:6px 0 14px}.gl{display:grid;grid-template-columns:54px 1fr auto;gap:10px;align-items:center;padding:7px 8px;border-radius:10px;border-left:3px solid transparent;cursor:pointer;opacity:.5;transition:background .2s,opacity .2s}
+.gl:hover{background:var(--card2)}.gl.on{opacity:1}.gl.P.on{border-left-color:var(--g)}.gl.O.on{border-left-color:var(--mu)}.gl.now{background:var(--gl);opacity:1}
+.gl .mn,.gr .mn{font:600 18px var(--disp)}
+.gl .wh,.gr .wh{display:flex;align-items:center;gap:9px;min-width:0}.gl .wh b,.gr .wh b{font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.gl .wh em,.gr .wh em{font:600 10px var(--ui);font-style:normal;text-transform:uppercase;letter-spacing:.1em;color:var(--gold);border:1px solid color-mix(in srgb,var(--gold) 50%,transparent);border-radius:999px;padding:1px 8px;white-space:nowrap}
+.gl .tt,.gr .tt{font-size:12px;color:var(--mu)}
+.mr small.sc2{color:var(--tx);opacity:.82;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mr.cl2{cursor:pointer;margin:0 -10px;padding:11px 10px;border-radius:10px}.mr.cl2:hover{background:var(--card2)}
+tr.cl[data-mm] td{cursor:pointer}
+/* ---------- ficha da partida ---------- */
+.mc.one{grid-template-columns:1fr;max-width:760px}
+.msc{display:grid;grid-template-columns:1fr auto 1fr;gap:14px;align-items:center;margin:12px 0 6px;text-align:center}
+.msc .tn{font:600 21px/1.15 var(--disp)}.msc .tn.P{color:var(--g)}.msc .sx2{font:600 46px/1 var(--disp);white-space:nowrap}
+.gr{display:grid;grid-template-columns:54px 1fr auto;gap:10px;align-items:center;padding:7px 0;border-bottom:1px solid var(--bd)}.gr:last-child{border:0}.gr.P .mn{color:var(--g)}
+.cl2s{list-style:none;margin:0;padding:0;font-size:13.5px}.cl2s li{padding:3px 0}
+.cd{display:inline-block;width:10px;height:14px;border-radius:2px;margin-right:7px;vertical-align:-2px}.cd.y{background:#e8c11a}.cd.r{background:#d1352b}
+.fq{margin-top:18px;padding:12px 14px;border-radius:12px;background:var(--card2);border:1px solid var(--bd);font-size:12.5px;color:var(--mu)}.fq b{color:var(--tx)}
+details.nt{margin-top:10px}details.nt summary{cursor:pointer;font-weight:600;color:var(--tx)}details.nt p{margin:6px 0}
+
 footer{margin-top:34px;border-top:1px solid var(--bd);padding:22px 0 34px;color:var(--mu);font-size:12px}
 footer b{color:var(--tx);font-weight:600}
 @media(max-width:600px){.wrap{padding:0 14px}.br h1{font-size:22px}.br img{height:54px}.fs{margin-left:0;width:100%}main{padding-top:18px}.c{padding:16px}}
 </style>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" onerror="this.onerror=null;var s=document.createElement('script');s.src='https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js';s.onload=function(){window.__t3&&__t3()};document.head.appendChild(s)"></script>
 </head>
 <body>
 <header class="hd"><div class="wrap">
@@ -234,16 +272,20 @@ footer b{color:var(--tx);font-weight:600}
   <div id="v3" hidden>
     <div id="e3"></div>
     <div class="s3" id="w3"><div class="c"><h3 class="t">Selecione uma partida</h3><div id="l3"></div></div>
-    <div><div class="vb"><button class="pill" data-v="0.95,190,0.6">Maquete</button><button class="pill" data-v="0.35,150,0">Aérea</button><button class="pill" data-v="1.25,56,0">Tribuna</button><button class="pill" data-v="1.3,70,1.57">Atrás do gol</button><button class="pill" data-v="auto">Girar</button><button class="btn" data-v="replay">▶ Reproduzir jogo</button></div>
-    <canvas id="cv"></canvas><p id="i3"></p><div class="grid" id="x3"></div></div></div>
+    <div><div class="vb"><button class="pill" data-v="0.95,190,0.6">Maquete</button><button class="pill" data-v="0.35,150,0">Aérea</button><button class="pill" data-v="1.25,56,0">Tribuna</button><button class="pill" data-v="1.3,70,1.57">Atrás do gol</button><button class="pill" data-v="auto">Girar</button><button class="pill on" data-v="follow" title="A câmera acompanha o jogador, a bola e o gol">Seguir o gol</button></div>
+    <div class="vb vb2"><button class="btn" id="bp" data-v="bp">⏸ Pausar</button><span class="seg"><button data-v="spd:1" class="on">1×</button><button data-v="spd:2">2×</button><button data-v="spd:4">4×</button></span><button class="btn gh" data-v="replay">↻ Reiniciar</button><span class="sp"></span><button class="btn gh" data-v="ficha">Ficha da partida</button></div>
+    <div class="cvw"><canvas id="cv"></canvas><div class="hud"><div class="clk"><b id="clk">0'</b><span id="half">1º tempo</span></div><div class="sbd" id="sb3"></div><div class="gol" id="gol"></div></div></div>
+    <div class="tr" id="tr3"></div><p id="i3"></p><div class="c" id="g3"></div><div class="grid" id="x3"></div></div></div>
   </div>
-  <footer><b>Painel independente, não oficial.</b> Dados fornecidos pelo usuário (atualização de 14/11/2026), sem validação externa. Estatísticas de jogos são calculadas a partir das partidas cadastradas; gols e assistências vêm dos rankings por competição (Top 25) e da tabela do elenco, então podem estar incompletos. “–” indica dado ausente, não zero. Resultados jogo a jogo existem apenas para 2026; as demais temporadas trazem elenco, rankings e recordes quando cadastrados.</footer>
+  <footer id="ft"></footer>
 </div></main>
 <div class="md" id="md" hidden><div class="mcw" id="mw"></div></div>
 
 <script>
 const D=__DATA__,PH=__PHOTOS__;
 const $=s=>document.querySelector(s);
+/* fotos: cada data-URI vira um blob URL uma única vez (HTML dos cards fica ~50x menor e o navegador reaproveita a imagem) */
+const _pu={};const pu=id=>{if(!PH[id])return"";if(_pu[id])return _pu[id];try{const[h,b]=PH[id].split(","),bin=atob(b),u=new Uint8Array(bin.length);for(let i=0;i<bin.length;i++)u[i]=bin.charCodeAt(i);return _pu[id]=URL.createObjectURL(new Blob([u],{type:h.slice(5,h.indexOf(";"))}))}catch(e){return PH[id]}};
 const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const pad=n=>String(n).padStart(2,"0"),_n=new Date(),TODAY=_n.getFullYear()+"-"+pad(_n.getMonth()+1)+"-"+pad(_n.getDate());
 const SH={"Campeonato Brasileiro":"Brasileirão","Campeonato Paulista":"Paulistão","CONMEBOL Libertadores":"Libertadores","Copa do Brasil":"Copa do Brasil","Copa do Mundo de Clubes da FIFA":"Mundial de Clubes","Supercopa do Brasil":"Supercopa","CONMEBOL Recopa":"Recopa"};
@@ -253,8 +295,16 @@ const nf=n=>n==null?"–":n.toLocaleString("pt-BR"),v_=x=>x??"–",R=(n,x)=>x?(n
 const POSN={G:"Goleiro",D:"Defensor",M:"Meio-campista",A:"Atacante"},POSO={G:0,D:1,M:2,A:3};
 
 /* ---------- dados ---------- */
-const M=D.m.map(a=>({d:a[0],c:a[1],o:a[2],l:a[3],gp:a[4],gc:a[5],s:a[6],f:a[7],pen:a[8],y:a[9],r:a[4]>a[5]?"V":a[4]<a[5]?"D":"E"})).reverse();M.forEach((m,i)=>m.i=i);
+const M=D.m.map(a=>({d:a[0],c:a[1],o:a[2],l:a[3],gp:a[4],gc:a[5],s:a[6],f:a[7],pen:a[8],y:a[9],id:a[10],r:a[4]>a[5]?"V":a[4]<a[5]?"D":"E"})).reverse();M.forEach((m,i)=>m.i=i);
 const F=D.f.map(a=>({d:a[0],c:a[1],o:a[2],l:a[3],h:a[4],y:a[5]})).sort((a,b)=>a.d<b.d?-1:1);
+const DT=D.dt||{},TYN={N:"Gol",P:"Pênalti",F:"Falta",H:"De cabeça",C:"Gol contra"};
+const shortN=n=>{const w=String(n||"").trim().split(/\s+/);return w.length>1?w[0][0]+". "+w[w.length-1]:w[0]||""};
+/* eventos de gol de uma partida, em ordem de minuto (45+2 vem depois de 45 e antes de 46). Sem detalhes -> ilustrativo */
+function evOf(m){const d=DT[m.id];
+ if(d&&d.g&&d.g.length==m.gp+m.gc)return d.g.map(g=>({lab:g[0],key:g[1],side:g[2],au:g[3],typ:g[4],pid:g[5]})).sort((a,b)=>a.key-b.key);
+ const s=[];for(let i=0;i<Math.max(m.gp,m.gc);i++){if(i<m.gp)s.push("P");if(i<m.gc)s.push("O")}
+ return s.map((sd,i)=>({lab:"",key:Math.round((i+1)*90/(s.length+1)),side:sd,au:null,typ:"N",pid:null,ill:true}))}
+const realEv=m=>{const d=DT[m.id];return!!(d&&d.g&&d.g.length==m.gp+m.gc)};
 const YEARS=D.seasons,DEF=YEARS.includes(2026)?2026:YEARS[0];
 let YS=new Set([DEF]),COMP="all",tab="Estádio 3D",pf="all",ps="pos",pq="",pv="cards",op=null,cpa=null,cpb=null;
 const inY=y=>YS.has(y),cmpOk=c=>COMP=="all"||c==COMP;
@@ -273,16 +323,17 @@ function aggP(){const mp=new Map();
 
 /* ---------- peças visuais ---------- */
 const ini=n=>n.split(/\s+/).filter(Boolean).map(w=>w[0]).slice(0,2).join("").toUpperCase();
-const av=(p,s=36)=>`<span class="av" style="--s:${s}px">${PH[p.id]?`<img src="${PH[p.id]}" alt="">`:`<i>${ini(p.n)}</i>`}</span>`;
+const av=(p,s=36)=>`<span class="av" style="--s:${s}px">${PH[p.id]?`<img src="${pu(p.id)}" alt="" loading="lazy" decoding="async">`:`<i>${ini(p.n)}</i>`}</span>`;
 const SIL='<svg viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="34" r="17"/><path d="M12 100c0-24 17-38 38-38s38 14 38 38z"/></svg>';
 const nm2=n=>{const w=n.trim().split(/\s+/);return w.length>1?`<small>${esc(w[0])}</small><b>${esc(w.slice(1).join(" "))}</b>`:`<b>${esc(n)}</b>`};
-const photo=(p,big)=>`<div class="ph ${p.pos=="G"?"gk":""}">${p.num!=null?`<span class="no">${p.num}</span>`:""}${PH[p.id]?`<img src="${PH[p.id]}" alt="${esc(p.n)}">`:SIL}${big?"":`<span class="tg">${POSN[p.pos]||p.pos||""}</span><div class="nm2">${nm2(p.n)}</div>`}</div>`;
+const photo=(p,big)=>`<div class="ph ${p.pos=="G"?"gk":""}">${p.num!=null?`<span class="no">${p.num}</span>`:""}${PH[p.id]?`<img src="${pu(p.id)}" alt="${esc(p.n)}" loading="lazy" decoding="async">`:SIL}${big?"":`<span class="tg">${POSN[p.pos]||p.pos||""}</span><div class="nm2">${nm2(p.n)}</div>`}</div>`;
 const pcard=p=>`<div class="pc" data-pl="${p.id}">${photo(p)}<div class="st"><div><b>${v_(p.j)}</b><span>Jogos</span></div><div><b>${p.pos=="G"?v_(p.gs):v_(p.g)}</b><span>${p.pos=="G"?"Gols sof.":"Gols"}</span></div><div><b>${p.pos=="G"?v_(p.d):v_(p.a)}</b><span>${p.pos=="G"?"Defesas":"Assist."}</span></div></div></div>`;
 const S=l=>{const o={j:l.length,V:0,E:0,D:0,gp:0,gc:0,cs:0};l.forEach(m=>{o[m.r]++;o.gp+=m.gp;o.gc+=m.gc;if(!m.gc)o.cs++});o.pts=o.V*3+o.E;o.ap=R(o.pts,o.j*3);o.apn=o.j?o.pts/(o.j*3)*100:0;o.sg=o.gp-o.gc;return o};
 const seq=(l,f)=>{let best=0,cur=0,run=0;[...l].reverse().forEach(m=>{run=f(m)?run+1:0;best=Math.max(best,run)});for(const m of l){if(f(m))cur++;else break}return[cur,best]};
 const chip=m=>`<span class="ch ${m.r}" title="${fd(m.d)} ${m.l=="Casa"?"x":"@"} ${esc(m.o)} ${m.gp}-${m.gc}">${m.r}</span>`;
 const tl=m=>{const P=`<span class="tm P">Palmeiras</span>`,O=`<span class="tm">${esc(m.o)}</span>`,x=m.l=="Casa"?`<b class="sx">${m.gp} × ${m.gc}</b>`:`<b class="sx">${m.gc} × ${m.gp}</b>`;return`<div class="tl">${m.l=="Casa"?P+x+O:O+x+P}</div>`};
-const rowM=(m,x="")=>`<div class="mr ${x}" ${x?`data-m="${m.i}"`:""}><div class="dt"><b>${+m.d.slice(8)}</b><span>${MN[+m.d.slice(5,7)-1]}</span></div><div>${tl(m)}<small>${sc(m.c)}${m.f?" · "+esc(m.f):""}${m.s=="Pênaltis"?" · decidido nos pênaltis":""}</small></div>${chip(m)}</div>`;
+const scorers=m=>{if(!realEv(m))return"";const e=evOf(m).filter(g=>g.side=="P");return e.length?`<small class="sc2">⚽ ${e.map(g=>esc(shortN(g.au))+" "+g.lab+"'"+(g.typ=="P"?" (p)":g.typ=="C"?" (gc)":"")).join(", ")}</small>`:""};
+const rowM=(m,x="")=>`<div class="mr ${x||"cl2"}" ${x?`data-m="${m.i}"`:`data-mm="${m.i}"`}><div class="dt"><b>${+m.d.slice(8)}</b><span>${MN[+m.d.slice(5,7)-1]}</span></div><div>${tl(m)}<small>${sc(m.c)}${m.f?" · "+esc(m.f):""}${m.s=="Pênaltis"?" · decidido nos pênaltis":""}</small>${scorers(m)}</div>${chip(m)}</div>`;
 const rowF=m=>`<div class="mr"><div class="dt"><b>${+m.d.slice(8)}</b><span>${MN[+m.d.slice(5,7)-1]}</span></div><div><div class="tl">${m.l=="Casa"?`<span class="tm P">Palmeiras</span><b class="sx">×</b><span class="tm">${esc(m.o)}</span>`:`<span class="tm">${esc(m.o)}</span><b class="sx">×</b><span class="tm P">Palmeiras</span>`}</div><small>${sc(m.c)} · ${m.h||"horário a definir"} · ${m.l=="Casa"?"em casa":"fora de casa"}</small></div><span class="ch F" style="padding:0 10px">Em breve</span></div>`;
 const bar=(l,v,max,t)=>`<div class="hb"><span>${l}</span><div class="pb"><i style="width:${max?v/max*100:0}%"></i></div><b>${t??v}</b></div>`;
 const lead=(p,val,max,txt)=>`<div class="lb2" data-pl="${p.id}">${av(p,38)}<div class="nm"><b class="n">${esc(p.n)}</b><div class="pb"><i style="width:${max?val/max*100:0}%"></i></div></div><em>${txt??val}</em></div>`;
@@ -326,7 +377,25 @@ function perf(){const l=cur();if(!l.length)return noM();const s=S(l),mx=[...l].s
  <p class="note">Média: <b>${(s.gp/s.j).toFixed(2)}</b> gols marcados e <b>${(s.gc/s.j).toFixed(2)}</b> sofridos por jogo.</p><hr>${bar("Vitórias",s.V,s.j,R(s.V,s.j))}${bar("Empates",s.E,s.j,R(s.E,s.j))}${bar("Derrotas",s.D,s.j,R(s.D,s.j))}</div>
  <div class="c"><h3 class="t">Sequências <span class="r">atual · melhor</span></h3><table><tbody>${sq.map(([n,f])=>{const[a,b]=seq(l,f);return`<tr><td>${n}</td><td class="hl">${a}</td><td class="mu">melhor ${b}</td></tr>`}).join("")}</tbody></table></div></div>
  <div class="g2"><div class="c"><h3 class="t">Gols por mês <span class="r lg"><s style="background:var(--g)"></s>pró<s style="background:var(--d)"></s>contra</span></h3><div class="mo">${Object.entries(mes).map(([k,a])=>`<div><p><i style="height:${a[0]/mm*100}%;background:var(--g)" title="${a[0]} gols pró"></i><i style="height:${a[1]/mm*100}%;background:var(--d)" title="${a[1]} gols contra"></i></p>${MN[+k.slice(5)-1]}<br><b style="color:var(--tx)">${a[0]}·${a[1]}</b></div>`).join("")}</div></div>
- <div class="c"><h3 class="t">Maiores vitórias e piores derrotas</h3>${mx.slice(0,3).map(m=>rowM(m)).join("")}<hr style="margin:6px 0">${mx.slice(-3).reverse().map(m=>rowM(m)).join("")}</div></div>`}
+ <div class="c"><h3 class="t">Maiores vitórias e piores derrotas</h3>${mx.slice(0,3).map(m=>rowM(m)).join("")}<hr style="margin:6px 0">${mx.slice(-3).reverse().map(m=>rowM(m)).join("")}</div></div>${perfG(l)}`}
+
+/* ---------- gols minuto a minuto (partidas com autor e minuto) ---------- */
+function perfG(l){const L=l.filter(realEv);if(!L.length)return"";const E=L.map(m=>({m,e:evOf(m)}));
+ const BN=[["1–15",k=>k<=15],["16–30",k=>k>15&&k<=30],["31–45",k=>k>30&&k<=45],["45+",k=>k>45&&k<46],["46–60",k=>k>=46&&k<=60],["61–75",k=>k>60&&k<=75],["76–90",k=>k>75&&k<=90],["90+",k=>k>90]];
+ const cnt=BN.map(([n,f])=>[n,E.reduce((s,x)=>s+x.e.filter(g=>g.side=="P"&&f(g.key)).length,0),E.reduce((s,x)=>s+x.e.filter(g=>g.side=="O"&&f(g.key)).length,0)]),mx=Math.max(1,...cnt.flatMap(a=>[a[1],a[2]]));
+ const fg={P:[],O:[],N:[]};E.forEach(x=>fg[x.e.length?x.e[0].side:"N"].push(x.m));
+ const row=(n,a)=>{const s=S(a);return`<tr><td>${n}</td><td>${s.j}</td><td>${s.V}</td><td>${s.E}</td><td>${s.D}</td><td class="hl">${s.j?s.ap:"–"}</td></tr>`};
+ const au=new Map();let pe=0,fa=0,ca=0,cf=0,cc=0,gp=0,seg=0,fim=0;
+ E.forEach(x=>x.e.forEach(g=>{if(g.side=="P"){gp++;if(g.key>=46)seg++;if(g.key>75)fim++}
+  if(g.typ=="C"){g.side=="P"?cf++:cc++;return}if(g.side!="P")return;
+  const k=g.pid||g.au,o=au.get(k)||{id:g.pid,n:g.au,c:0};o.c++;au.set(k,o);if(g.typ=="P")pe++;if(g.typ=="F")fa++;if(g.typ=="H")ca++}));
+ const top=[...au.values()].sort((a,b)=>b.c-a.c||a.n.localeCompare(b.n)).slice(0,8),virou=fg.O.filter(m=>m.r=="V").length,perdeu=fg.P.filter(m=>m.r!="V").length;
+ return`<div class="sec"><h2>Gols minuto a minuto</h2><span>${L.length} partidas com autor e minuto · ${ylab()}</span></div>
+ <div class="g2"><div class="c"><h3 class="t">Em que minuto saem os gols <span class="r lg"><s style="background:var(--g)"></s>pró<s style="background:var(--d)"></s>contra</span></h3><div class="mo" style="gap:6px">${cnt.map(([n,a,b])=>`<div><p><i style="height:${a/mx*100}%;background:var(--g)" title="${a} gols pró"></i><i style="height:${b/mx*100}%;background:var(--d)" title="${b} gols contra"></i></p>${n}<br><b style="color:var(--tx)">${a}·${b}</b></div>`).join("")}</div><p class="note">Faixas de minutos; “45+” e “90+” são acréscimos. Gol contra conta para o time beneficiado, como no placar.</p></div>
+ <div class="c"><h3 class="t">Quem abre o placar</h3><div class="sc"><table><thead><tr><th></th><th>J</th><th>V</th><th>E</th><th>D</th><th>Aprov.</th></tr></thead><tbody>${row("Palmeiras marca primeiro",fg.P)}${row("Adversário marca primeiro",fg.O)}${row("Sem gols (0 × 0)",fg.N)}</tbody></table></div>
+ <p class="note">Viradas: <b>${virou}</b> vitória(s) após sofrer o primeiro gol · Pontos perdidos após abrir o placar: <b>${perdeu}</b> jogo(s).</p><hr>${bar("Gols marcados no 2º tempo",seg,gp,seg+" de "+gp+" ("+R(seg,gp)+")")}${bar("Gols marcados após os 75 min",fim,gp,fim+" de "+gp+" ("+R(fim,gp)+")")}</div></div>
+ <div class="g2"><div class="c"><h3 class="t">Autores dos gols do Palmeiras</h3>${top.map(p=>lead(p,p.c,top[0].c)).join("")||'<p class="mu sm">Sem gols.</p>'}<p class="note">Conta só os gols descritos nas partidas detalhadas; pode diferir do quadro do Elenco (rankings por competição). Gols contra não entram.</p></div>
+ <div class="c"><h3 class="t">Tipos de gol</h3>${bar("Pênaltis a favor",pe,Math.max(1,gp),pe)}${bar("Faltas",fa,Math.max(1,gp),fa)}${bar("De cabeça",ca,Math.max(1,gp),ca)}${bar("Gols contra a favor",cf,Math.max(1,gp),cf)}${bar("Gols contra do Palmeiras",cc,Math.max(1,E.reduce((s,x)=>s+x.e.filter(g=>g.side=="O").length,0)),cc)}<p class="note">O tipo só é conhecido quando a base o informa (pênalti, falta, cabeça, gol contra); os demais aparecem como gol comum.</p></div></div>`}
 
 /* ---------- elenco ---------- */
 function squad(){const P=aggP();if(!P.length)return empty("Sem elenco cadastrado","Não há jogadores registrados para "+ylab()+(COMP!="all"?" em "+sc(COMP):"")+".");
@@ -354,11 +423,34 @@ function squad(){const P=aggP();if(!P.length)return empty("Sem elenco cadastrado
 function openP(id){const b=D.pl[id];if(!b)return;const P=aggP().find(p=>p.id==id)||{id,n:b[0],pos:b[1],nac:b[2],alt:b[3],peso:b[4],num:null,age:null,...Object.fromEntries(KS.map(k=>[k,null]))};
  const hist=D.e.filter(r=>r[0]==id).sort((a,b)=>b[1]-a[1]||(a[2]<b[2]?-1:1));
  const gk=P.pos=="G",st=gk?[["j","Jogos"],["sub","Reserva"],["d","Defesas"],["gs","Gols sofridos"],["ca","Amarelos"],["cv","Vermelhos"]]:[["j","Jogos"],["sub","Reserva"],["g","Gols"],["a","Assistências"],["fc","Faltas com."],["fs","Faltas sof."],["ca","Amarelos"],["cv","Vermelhos"]];
+ const gh=goalsOf(id);
  $("#mw").innerHTML=`<div class="mc" role="dialog" aria-modal="true" aria-label="${esc(P.n)}"><button class="xx" data-close="1" aria-label="Fechar">×</button>${photo(P,1)}<div class="bd"><div class="eb">${POSN[P.pos]||P.pos||""}${P.nac?" · "+esc(P.nac):""}</div><h2>${esc(P.n)}</h2>
  <div class="bio"><div><span>Camisa</span><b>${v_(P.num)}</b></div><div><span>Idade</span><b>${v_(P.age)}</b></div><div><span>Altura</span><b>${P.alt?P.alt.toFixed(2).replace(".",",")+" m":"–"}</b></div><div><span>Peso</span><b>${P.peso?P.peso+" kg":"–"}</b></div></div>
  <h3 class="t" style="margin-top:20px">Números · ${ylab()}${COMP!="all"?" · "+sc(COMP):""}</h3><div class="sg">${st.map(([k,n])=>`<div><b>${v_(P[k])}</b><span>${n}</span></div>`).join("")}</div>
- <h3 class="t" style="margin-top:22px">Histórico por competição</h3><div class="sc"><table><thead><tr><th>Temp.</th><th>Competição</th><th>J</th><th>G</th><th>A</th><th>CA</th><th>CV</th></tr></thead><tbody>${hist.map(r=>`<tr><td>${r[1]}</td><td class="l">${sc(r[2])}</td><td>${v_(r[6])}</td><td>${v_(r[8])}</td><td>${v_(r[9])}</td><td>${v_(r[12])}</td><td>${v_(r[13])}</td></tr>`).join("")||'<tr><td colspan="7" class="mu">Sem histórico.</td></tr>'}</tbody></table></div></div></div>`;
+ <h3 class="t" style="margin-top:22px">Histórico por competição</h3><div class="sc"><table><thead><tr><th>Temp.</th><th>Competição</th><th>J</th><th>G</th><th>A</th><th>CA</th><th>CV</th></tr></thead><tbody>${hist.map(r=>`<tr><td>${r[1]}</td><td class="l">${sc(r[2])}</td><td>${v_(r[6])}</td><td>${v_(r[8])}</td><td>${v_(r[9])}</td><td>${v_(r[12])}</td><td>${v_(r[13])}</td></tr>`).join("")||'<tr><td colspan="7" class="mu">Sem histórico.</td></tr>'}</tbody></table></div>${gh}</div></div>`;
  $("#md").hidden=false;document.body.style.overflow="hidden"}
+function goalsOf(id){const r=[];cur().slice().reverse().forEach(m=>{if(realEv(m))evOf(m).forEach(e=>{if(e.pid==id)r.push([m,e])})});if(!r.length)return"";
+ return`<h3 class="t" style="margin-top:22px">Gols nas partidas detalhadas · ${r.filter(([m,e])=>e.typ!="C").length}</h3><div class="sc"><table><thead><tr><th>Data</th><th class="l">Jogo</th><th>Min.</th><th class="l">Tipo</th></tr></thead><tbody>${r.map(([m,e])=>`<tr class="cl" data-mm="${m.i}"><td>${fd(m.d)}</td><td class="l">${m.l=="Casa"?"x":"@"} ${esc(m.o)} <span class="mu">${m.gp}-${m.gc}</span></td><td>${e.lab}'</td><td class="l">${TYN[e.typ]||"Gol"}</td></tr>`).join("")}</tbody></table></div><p class="note">Gols descritos jogo a jogo; podem diferir do quadro acima (rankings por competição). Clique numa linha para abrir a partida.</p>`}
+/* ---------- ficha da partida (gols, cartões, assistências e qualidade dos dados) ---------- */
+function openG(i){const m=M[i];if(!m)return;const d=DT[m.id]||{},evs=evOf(m),real=realEv(m),H=m.l=="Casa";
+ const hn=H?"Palmeiras":m.o,an=H?m.o:"Palmeiras",hs=H?m.gp:m.gc,as_=H?m.gc:m.gp,tn=s=>s=="P"?"Palmeiras":m.o;
+ const gl=!evs.length?'<p class="mu sm" style="margin:0">Partida sem gols.</p>':evs.map(e=>`<div class="gr ${e.side}"><span class="mn">${e.lab?e.lab+"'":"–"}</span><span class="wh">${e.pid?av({id:e.pid,n:e.au},26):""}<b>${esc(e.au||"Autor não informado")}</b>${e.typ!="N"&&TYN[e.typ]?`<em>${TYN[e.typ]}</em>`:""}</span><span class="tt">${esc(tn(e.side))}</span></div>`).join("");
+ const it=(a,k)=>a.map(x=>`<li><i class="cd ${k}"></i>${esc(x[0])}${x[1]?` <span class="mu">${x[1]}'</span>`:""}${x[3]?` <span class="mu">· ${esc(x[3])}</span>`:""}${x[4]>1?` <span class="mu">×${x[4]}</span>`:""}</li>`).join("");
+ const cards=s=>{const y=(d.ca||[]).filter(x=>x[2]==s),r=(d.cv||[]).filter(x=>x[2]==s);return y.length||r.length?`<ul class="cl2s">${it(y,"y")}${it(r,"r")}</ul>`:'<p class="mu sm" style="margin:0">Nenhum registrado.</p>'};
+ const asl=s=>{const a=(d.as||[]).filter(x=>x[2]==s);return a.length?`<ul class="cl2s">${a.map(x=>`<li>${esc(x[0])}${x[4]>1?` <span class="mu">×${x[4]}</span>`:""}${x[3]?` <span class="mu">· ${esc(x[3])}</span>`:""}</li>`).join("")}</ul>`:'<p class="mu sm" style="margin:0">Nenhuma registrada.</p>'};
+ const obs=(k,t)=>d[k]?`<p class="note" style="margin:6px 0 0">${t}: ${esc(d[k])}</p>`:"";
+ const col=(a,b)=>`<div class="g2" style="grid-template-columns:repeat(auto-fit,minmax(220px,1fr));margin:0 0 4px"><div><div class="eb" style="color:var(--gold);margin:0 0 4px">Palmeiras</div>${a}</div><div><div class="eb" style="color:var(--gold);margin:0 0 4px">${esc(m.o)}</div>${b}</div></div>`;
+ const q=[d.st=="c"?"<b>Completo</b> na base, que é fornecida e não passou por auditoria externa.":"<b>Dados parciais:</b> "+esc(d.sn||"conferir fonte")+".",d.f?"Gols e minutos: "+esc(d.f)+".":"",d.i?"Os gols do mesmo autor aparecem agrupados na planilha (ex.: “2x”); a ligação entre autor e minuto segue a ordem da lista.":"",!real?"Sem autor e minuto dos gols cadastrados para esta partida.":""].filter(Boolean).join(" ");
+ $("#mw").innerHTML=`<div class="mc one" role="dialog" aria-modal="true" aria-label="Ficha da partida"><button class="xx" data-close="1" aria-label="Fechar">×</button><div class="bd"><div class="eb">${sc(m.c)}${m.f?" · "+esc(m.f):""} · ${fdl(m.d)}</div>
+ <div class="msc"><div class="tn ${H?"P":""}">${esc(hn)}</div><div class="sx2">${hs} × ${as_}</div><div class="tn ${H?"":"P"}">${esc(an)}</div></div>
+ <div style="text-align:center;margin-bottom:6px">${chip(m)} <span class="mu sm">${H?"em casa":"fora de casa"}${m.pen?" · pênaltis: Palmeiras "+m.pen.replace("-"," × "):""}</span></div>
+ <h3 class="t" style="margin-top:20px">Gols <span class="r">em ordem de minuto</span></h3>${gl}
+ <h3 class="t" style="margin-top:22px">Cartões</h3>${col(cards("P"),cards("O"))}${obs("can","Amarelos")}${obs("cvn","Vermelhos")}
+ <h3 class="t" style="margin-top:22px">Assistências</h3>${col(asl("P"),asl("O"))}${obs("asn","Observação")}
+ <div class="fq">${q}</div>
+ <div class="tb" style="margin:16px 0 0"><button class="btn" data-g3="${i}">▶ Ver no estádio 3D</button></div></div></div>`;
+ $("#md").hidden=false;document.body.style.overflow="hidden"}
+
 const closeP=()=>{$("#md").hidden=true;document.body.style.overflow=""};
 
 /* ---------- jogos ---------- */
@@ -410,18 +502,18 @@ function recs(){const ys=[...YS].sort((a,b)=>b-a);const sec=ys.map(y=>{
 
 /* ---------- exportação ---------- */
 const csv=(rows,n)=>{const s=rows.map(r=>r.map(c=>`"${String(c??"").replace(/"/g,'""')}"`).join(";")).join("\n"),a=document.createElement("a");a.href=URL.createObjectURL(new Blob(["﻿"+s],{type:"text/csv"}));a.download=n;a.click()};
-function exp(k){if(k=="m")csv([["Data","Temporada","Competição","Fase","Adversário","Mando","Gols Palmeiras","Gols adversário","Resultado (90 min)","Pênaltis"],...cur().map(m=>[m.d,m.y,m.c,m.f,m.o,m.l,m.gp,m.gc,m.r,m.pen])],"palmeiras-jogos.csv");
+function exp(k){if(k=="m")csv([["Data","Temporada","Competição","Fase","Adversário","Mando","Gols Palmeiras","Gols adversário","Resultado (90 min)","Pênaltis","Gols (minuto, autor)"],...cur().map(m=>[m.d,m.y,m.c,m.f,m.o,m.l,m.gp,m.gc,m.r,m.pen,realEv(m)?evOf(m).map(e=>e.lab+"' "+e.au+" ("+(e.side=="P"?"PAL":"adv")+(e.typ!="N"?", "+TYN[e.typ].toLowerCase():"")+")").join("; "):""])],"palmeiras-jogos.csv");
  else csv([["Nº","Jogador","Pos","Idade","Jogos","Reserva","Gols","Assistências","Faltas cometidas","Faltas sofridas","CA","CV"],...aggP().map(p=>[p.num,p.n,p.pos,p.age,p.j,p.sub,p.g,p.a,p.fc,p.fs,p.ca,p.cv])],"palmeiras-elenco-"+[...YS].sort().join("-")+".csv")}
 
 /* ---------- estádio 3D ---------- */
 function ctx3(m){const h=M.filter(x=>x.y==m.y&&x.c==m.c&&x.d<=m.d),s=S(h),f=M.filter(x=>x.d<m.d).slice(0,5).reverse();
  $("#x3").innerHTML=[[sc(m.c),"competição"],[`${s.V}V ${s.E}E ${s.D}D`,`campanha até este jogo (${s.j} jogos)`],[s.ap,"aproveitamento até aqui"],[`${s.gp} × ${s.gc}`,"gols pró × contra até aqui"]].map(a=>`<div class="c k"><b>${a[0]}</b><span>${a[1]}</span></div>`).join("")+`<div class="c" style="grid-column:1/-1"><h3 class="t">Forma nos 5 jogos anteriores</h3>${f.map(chip).join(" ")||"–"}</div>`}
-let S3=null,SEL=0,setMatch;
+let S3=null,SEL=0,setMatch;window.__t3=()=>{if(tab=="Estádio 3D"&&typeof THREE!="undefined")draw()};
 function stad(){const l=cur();$("#e3").innerHTML="";
  if(!l.length){$("#w3").hidden=true;$("#e3").innerHTML=noM();return}
  $("#w3").hidden=false;if(!l.find(m=>m.i==SEL))SEL=l[0].i;
  $("#l3").innerHTML=l.map(m=>rowM(m,"cl"+(m.i==SEL?" sel":""))).join("");
- if(typeof THREE=="undefined"){$("#i3").textContent="O ambiente 3D precisa de internet para carregar a biblioteca three.js. As demais abas funcionam normalmente.";return}
+ if(typeof THREE=="undefined"){$("#i3").textContent="O ambiente 3D precisa de internet para carregar a biblioteca three.js. Use “Ficha da partida” para ver gols, cartões e assistências; as demais abas funcionam normalmente.";return}
  if(!S3)S3=init3();setMatch(M[SEL])}
 __STADIUM__
 
@@ -430,10 +522,12 @@ const TABS={"Estádio 3D":stad,"Visão geral":ov,"Elenco":squad,"Jogos":games,"D
 $("#nav").innerHTML=Object.keys(TABS).map(t=>`<button>${t}</button>`).join("");
 function draw(){drawFilters();document.querySelectorAll("nav button").forEach(b=>b.classList.toggle("on",b.textContent==tab));const s=tab=="Estádio 3D";$("#v").hidden=s;$("#v3").hidden=!s;if(s)stad();else $("#v").innerHTML=TABS[tab]()}
 $("#nav").onclick=e=>{if(e.target.tagName=="BUTTON"){tab=e.target.textContent;draw();scrollTo({top:0})}};
-document.addEventListener("click",e=>{const t=e.target,g=t.closest("[data-yr],[data-y],[data-pl],[data-close],[data-x],[data-p],[data-pv],[data-k]");
+document.addEventListener("click",e=>{const t=e.target,g=t.closest("[data-yr],[data-y],[data-pl],[data-close],[data-x],[data-p],[data-pv],[data-k],[data-mm],[data-g3]");
  if(t.id=="md"){closeP();return}if(!g)return;const d=g.dataset;
  if(d.close){closeP();return}
  if(d.pl){openP(d.pl);return}
+ if(d.mm!=null){openG(+d.mm);return}
+ if(d.g3!=null){const m=M[+d.g3];SEL=m.i;if(!cur().some(x=>x.i==SEL)){COMP="all";YS=new Set([m.y])}closeP();tab="Estádio 3D";draw();scrollTo({top:0});return}
  if(d.yr){if(d.yr=="all")YS=new Set(YEARS);else{const y=+d.yr;if(YS.size==YEARS.length)YS=new Set([y]);else if(YS.has(y)){if(YS.size>1)YS.delete(y)}else YS.add(y)}draw();return}
  if(d.y){YS=new Set([DEF]);draw();return}
  if(d.x)exp(d.x);if(d.p){pf=d.p;draw()}if(d.pv){pv=d.pv;draw()}if(d.k){ps=d.k;draw()}});
@@ -442,6 +536,8 @@ document.addEventListener("change",e=>{const i=e.target.id,v=e.target.value;
  if(i=="comp"){COMP=v;draw()}else if(i=="op"){op=v;draw()}else if(i=="pa"){cpa=v;draw()}else if(i=="pb"){cpb=v;draw()}else if(i=="so"){ps=v;draw()}});
 document.addEventListener("input",e=>{if(e.target.id=="q"){pq=e.target.value;const p=e.target.selectionStart;draw();const q=$("#q");q.focus();q.setSelectionRange(p,p)}});
 $("#th").onclick=()=>{const r=document.documentElement;r.dataset.theme=r.dataset.theme=="dark"?"light":"dark";try{localStorage.setItem("pt",r.dataset.theme)}catch(e){}};
+$("#ft").innerHTML=`<b>Painel independente, não oficial.</b> Dados fornecidos pelo usuário (base integrada, atualização de ${D.meta.upd}), sem validação externa. Estatísticas de jogos são calculadas a partir das partidas cadastradas; gols e assistências dos jogadores vêm dos rankings por competição (Top 25) e da tabela do elenco, então podem estar incompletos. Autor, minuto, cartões e assistências de cada partida vêm da aba “Detalhes Partidas 2026” e não são somados às estatísticas do elenco. “–” indica dado ausente, não zero. Resultados jogo a jogo existem apenas para 2026; as demais temporadas trazem elenco, rankings e recordes quando cadastrados.
+ <details class="nt"><summary>Notas da integração da base</summary>${D.meta.notas.map(n=>`<p><b>${esc(n[0])}:</b> ${esc(n[1])}</p>`).join("")}</details>`;
 draw();
 </script>
 </body>
