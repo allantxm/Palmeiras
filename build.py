@@ -2,7 +2,8 @@
 
 Uso:  python build.py [planilha.xlsx]      (requer pandas, openpyxl e pillow)
 
-Planilha padrão: Palmeiras_Base_Projeto_Integrada_2026.xlsx (ou a primeira Palmeiras_Base*.xlsx da pasta).
+Planilha padrão: Palmeiras_Base_Projeto_2026.xlsx (ou a primeira Palmeiras_Base*.xlsx da pasta).
+Só a temporada 2026 é lida: linhas de outros anos, se existirem na planilha, são ignoradas.
 
 Novidades da base integrada 2026
   - "Detalhes Partidas 2026": autor, minuto e tipo dos gols, cartões e assistências de cada jogo.
@@ -19,13 +20,17 @@ from PIL import Image
 
 AQUI = os.path.dirname(os.path.abspath(__file__))
 os.chdir(AQUI)
-ARQ = sys.argv[1] if len(sys.argv) > 1 else 'Palmeiras_Base_Projeto_Integrada_2026.xlsx'
+SEASON = 2026                       # o painel trabalha somente com esta temporada
+ARQ = sys.argv[1] if len(sys.argv) > 1 else 'Palmeiras_Base_Projeto_2026.xlsx'
 if not os.path.exists(ARQ):
     c = sorted(glob.glob('Palmeiras_Base*.xlsx'))
     if not c:
         sys.exit('Planilha não encontrada (Palmeiras_Base*.xlsx).')
     ARQ = c[-1]
 X = pd.read_excel(ARQ, sheet_name=None)
+for _k, _v in X.items():                  # trava: somente a temporada 2026
+    if 'Temporada' in _v.columns:
+        X[_k] = _v[_v['Temporada'] == SEASON].reset_index(drop=True)
 AVISOS = []
 
 
@@ -50,6 +55,8 @@ def nz(t):
 
 # ---------- jogadores (cadastro) ----------
 J = X['Jogadores']
+_ids = set(X['Elenco']['ID Jogador']) | set(X['Gols e Assistências']['ID Jogador']) | set(X['Cartões']['ID Jogador'])
+J = J[J['ID Jogador'].isin(_ids)]
 pl = {r['ID Jogador']: [r['Nome'], s(r['Posição']), s(r['Nacionalidade']), n(r['Altura (m)']), n(r['Peso (kg)'])]
       for _, r in J.iterrows()}
 POR_NOME = {nz(v[0]): k for k, v in pl.items()}
@@ -342,11 +349,11 @@ for p in sorted(glob.glob('fotos/PAL*.*')):
     if pid in pl:
         ph[pid] = webp(p, (360, 420))
     else:
-        AVISOS.append(f'foto sem jogador correspondente: {p}')
+        pass                                  # foto de jogador fora de 2026: ignorada
 
 im = Image.open('escudo-palmeiras.png').convert('RGBA').resize((260, 260), Image.LANCZOS)   # PNG com fundo transparente
-b = io.BytesIO(); im.save(b, 'PNG', optimize=True)
-logo = 'data:image/png;base64,' + base64.b64encode(b.getvalue()).decode()
+b = io.BytesIO(); im.save(b, 'WEBP', quality=90, method=6)           # WEBP mantém a transparência e é bem menor
+logo = 'data:image/webp;base64,' + base64.b64encode(b.getvalue()).decode()
 
 data = dict(seasons=seasons, pl=pl, e=e, m=m, f=f, rec=rec, seq=seq, pub=pub, dt=DT, meta=meta)
 tpl = open('tpl.html', encoding='utf-8').read()

@@ -1,4 +1,4 @@
-PAINEL PALMEIRAS · PAINEL ESTATISTICO (base integrada 2026)
+PAINEL PALMEIRAS · PAINEL ESTATISTICO 2026
 
 Como abrir: extraia o ZIP e abra index.html no navegador (tela inicial: Estadio 3D).
 
@@ -14,7 +14,9 @@ ESTADIO 3D · GOLS DA PARTIDA
 - Desempenho > "Gols minuto a minuto": gols por faixa de minuto, quem abre o placar, autores e tipos de gol.
 - Ficha do jogador: lista os gols descritos jogo a jogo.
 
-NOVA BASE (Palmeiras_Base_Projeto_Integrada_2026.xlsx)
+BASE (Palmeiras_Base_Projeto_2026.xlsx · somente temporada 2026)
+- A planilha e o painel contem apenas 2026. O build.py ignora linhas de outros anos se alguem as incluir.
+- O painel abre no tema escuro; o botao no cabecalho alterna para o claro (a escolha fica salva).
 - "Detalhes Partidas 2026": autor/minuto/tipo dos gols, cartoes e assistencias (texto livre, convertido pelo build.py).
 - "Gols Confirmados 2026": corrige os gols de 4 jogos (J018, J024, J034, J040) e prevalece sobre o texto.
 - "Notas integracao 2026": avisos exibidos no rodape.
